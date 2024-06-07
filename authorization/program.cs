@@ -68,12 +68,18 @@ public class Program
     public static async Task Main(string[] args)
     {
         var (appKey, appSecret, csAuthUrl) = ConstructInitAuthUrl();
+        
         System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
         {
             FileName = csAuthUrl,
             UseShellExecute = true
         });
-        //the returned URL will be in the form of https:// and will appear in an external web browser. Copy and paste it here.
+        //this will open your browser to the Schwab login page, currently at https://sws-gateway.schwab.com/ui/host/#/login-one-step. 
+        //you will be asked to enter your login id and password. The id and password you use needs to be for your trading account
+        //not your developer account. After completing this form, you will be directed through a series of screens to confrim that
+        //you know what you're doing here and really want to do it. When you finish this confirmation process, you will end up at
+        //the returned URL, which will appear on the address line of your browser. It will be in the form of [the callback url for your
+        //registered app with a couple of query parameters. Copy the entire url and paste it here.
         Console.WriteLine("Paste Returned URL:");
         string returnedUrl = Console.ReadLine();
 
